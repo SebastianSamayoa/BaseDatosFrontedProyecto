@@ -1,0 +1,22 @@
+<br>
+<h1 class="text-info text-center">{{titulo}}</h1>
+<div class="container">
+  <table class="table table-hover table-responsive form-control-static ">
+  <thead>
+    <tr>
+      <th scope="col">Id Gestion</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reporte of objectcontrolgestiones">
+      <th scope="row">{{reporte.idgestion}}</th>
+      <td>{{reporte.usuarioregistro}}</td>
+      <td>{{reporte.fecharegistro}}</td>
+      <td>{{reporte.estadogestion}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

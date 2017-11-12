@@ -1,0 +1,38 @@
+<br>
+<h1 class="text-center text-success">{{titulo}}</h1>
+<hr>
+<div class="container">
+    <form #formTiposGestiones = "ngForm" (ngSubmit)="CrearTiposGestiones(); formTiposGestiones.reset();" class=""> 
+      <h2 class="text-muted text-center">
+        Ingresar Tipo de Gestion
+      </h2>
+      
+  <div class="container col-xs-4 col-xs-offset-4">
+    <label>Estado Gestion
+        <span *ngIf="!descripciongestion.valid && descripciongestion.touched" class="label label-info" >Campo Requerido </span>
+      </label>
+      <input type="text" name="descripciongestion" class="form-control" #descripciongestion="ngModel" [(ngModel)]="tiposgestionesenviar.descripciongestion"  required maxlength="30" placeholder="Ingresa Descripcion">  
+      <hr>
+      <input type="submit" value="Crear Nueva Gestion" class="btn btn-info col-xs-offset-4" [disabled]="!formTiposGestiones.form.valid" onclick="javascript:window.location.reload();">
+  </div>
+    </form>
+</div>
+
+<br>
+<h3 class="text-info text-center">{{titulo}}</h3>
+<div class="container col-xs-6 col-xs-offset-3">
+  <table class="table table-hover table-responsive form-control-static ">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Motivo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let gestion of objecttiposgestiones">
+      <th scope="row">{{gestion.idtipogestion}}</th>
+      <td>{{gestion.descripciongestion}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,77 @@
+<br>
+<h1 class="text-center text-success">{{titulo}}</h1>
+<hr>
+<div class="container">
+    <form #formControlGestiones = "ngForm" (ngSubmit)="CrearControlGestiones(); formControlGestiones.reset();" class=""> 
+      <h2 class="text-muted">
+        Ingresar Gestion para una Devolución
+      </h2>
+      <div class="container">
+        <div class="col-xs-6">
+          
+      <label>Tipo de Gestion</label>
+      <select class="form-control" name="idtipogestion" #idtipogestion="ngModel" [(ngModel)]="controlgestionesenviar.idtipogestion" >
+        <option class="text-info" *ngFor="let gestion of objecttiposgestiones" [value]="gestion.idtipogestion"> 
+        {{gestion.idtipogestion }} - {{gestion.descripciongestion}} </option>
+      </select>
+
+      <label>Motivo </label>
+      <select class="form-control " name="idmotivo" #idmotivo="ngModel" [(ngModel)]="controlgestionesenviar.idmotivo">
+        <option class="text-info" *ngFor="let motivo of objecttiposmotivos" [value]="motivo.idmotivo"> 
+        {{motivo.idmotivo }} - {{motivo.descripcionmotivo}} </option>
+      </select> 
+
+        </div>
+        <div class="col-xs-6">
+
+      <label>Codigo Cliente
+        <span *ngIf="!idcliente.valid && idcliente.touched" class="label label-info" >Campo Requerido</span>
+      </label>
+      <input type="text" name="idcliente" class="form-control" #idcliente="ngModel" [(ngModel)]="controlgestionesenviar.idcliente"  required pattern="[0-9]+" maxlength="5" placeholder="Ingesa el Codigo de tu Cliente">
+
+      <label>Origen
+        <span *ngIf="!origen.valid && origen.touched" class="label label-info" >Campo Requerido </span>
+      </label>
+      <select class="form-control " name="origen" #origen="ngModel" [(ngModel)]="controlgestionesenviar.origen">
+        <option class="text-info" value="W"> Web </option>
+        <option class="text-info" value="P"> Producto </option>
+      </select> 
+
+        </div>
+      <div class="col-xs-6">
+        
+      <label>Monto
+        <span *ngIf="!monto.valid && monto.touched" class="label label-info" >Campo Requerido </span>
+      </label>
+      <input type="text" name="monto" class="form-control" #monto="ngModel" [(ngModel)]="controlgestionesenviar.monto"  required pattern="[0-9]+" maxlength="14" placeholder="Ingesa el Monto de la Devolución">
+
+      <label>Usuario Registro
+        <span *ngIf="!usuarioregistro.valid && usuarioregistro.touched" class="label label-info" >Campo Requerido </span>
+      </label>
+      <input type="text" name="usuarioregistro" class="form-control" #usuarioregistro="ngModel" [(ngModel)]="controlgestionesenviar.usuarioregistro"  required placeholder="Ingresa Usuario que Registro la Venta">           
+
+      </div>
+      <div class="col-xs-6">
+        
+      <label>Fecha Registro
+        <span *ngIf="!fecharegistro.valid && fecharegistro.touched" class="label label-info" >Campo Requerido valor Numerico </span>
+      </label>
+      <input type="date" name="fecharegistro" class="form-control" #fecharegistro="ngModel" [(ngModel)]="controlgestionesenviar.fecharegistro"  required >
+
+      <label>Estado Gestion
+        <span *ngIf="!estadogestion.valid && estadogestion.touched" class="label label-info" >Campo Requerido </span>
+      </label>
+      <select class="form-control " name="estadogestion" #estadogestion="ngModel" [(ngModel)]="controlgestionesenviar.estadogestion">
+        <option class="text-info" value="ING"> Ingresada </option>
+        <option class="text-info" value="PRO"> En Proceso </option>
+        <option class="text-info" value="DEN"> Denegada </option>
+        <option class="text-info" value="APR"> Aprobada </option>
+      </select> 
+
+
+      </div>
+      </div>
+      <hr>
+      <input type="submit" value="Crear Nueva Gestion" class="btn btn-info col-xs-offset-4" [disabled]="!formControlGestiones.form.valid">
+    </form>
+</div>
